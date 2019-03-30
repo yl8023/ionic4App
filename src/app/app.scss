@@ -1,0 +1,6 @@
+@import "./base.scss"; //导入样式初始化
+@import "./media.scss"; //导入全局媒体查询适配
+html,
+body {
+    height: 100%;
+}
