@@ -1,29 +1,35 @@
 <ion-content>
     <div class="bg">
-        <!-- logo -->
         <div class="login-logo">
         </div>
-        <form>
+        <form [formGroup]="LoginForm">
             <ion-item class="input">
                 <ion-label>
                     <ion-icon name="person"></ion-icon>
                 </ion-label>
-                <ion-input name="username" clearInput placeholder="6-16位英文或数字" maxlength="16" [(ngModel)]="LoginFormInfo.username" (ionBlur)="userBlur(LoginFormInfo.username)" autocomplete="off"></ion-input>
+                <ion-input name="username" clearInput placeholder="6-16位英文或数字" maxlength="16" formControlName="username"></ion-input>
             </ion-item>
-
+            <div class="validators">
+                <p *ngIf="LoginForm.get('username')?.dirty && LoginForm.get('username')?.errors">输入用户名</p>
+            </div>
             <ion-item class="input">
                 <ion-label>
                     <ion-icon name="lock"></ion-icon>
                 </ion-label>
-                <ion-input name="password" clearInput type="password" placeholder="6-18位英文或数字" maxlength="18" [(ngModel)]="LoginFormInfo.password" autocomplete="off"></ion-input>
+                <ion-input name="password" clearInput type="password" placeholder="6-18位英文或数字" maxlength="18" formControlName="password"></ion-input>
             </ion-item>
+            <div class="validators">
+                <p *ngIf="LoginForm.get('password')?.dirty && LoginForm.get('password')?.errors">输入密码</p>
+            </div>
 
         </form>
-        <ion-button fill="solid" expand="block" round strong (click)="goLogin()">登&nbsp;&nbsp;&nbsp;&nbsp;录</ion-button>
+        <ion-button fill="solid" expand="block" color="secondary" (click)="goLogin()">登&nbsp;&nbsp;&nbsp;&nbsp;录</ion-button>
 
-        <ion-button class="register" [routerLink]="[ '/register' ]" fill="outline" expand="block" round strong>注&nbsp;&nbsp;&nbsp;&nbsp;册</ion-button>
+        <ion-button class="register"color="light" [routerLink]="[ '/register' ]" fill="outline" expand="block">注&nbsp;&nbsp;&nbsp;&nbsp;册</ion-button>
 
-        <a href="javascript:;">联系客服</a>
+        <div class="customer">
+            <a href="javascript:;">联系客服</a>
+        </div>
     </div>
 
 

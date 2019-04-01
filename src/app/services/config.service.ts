@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalstorageService } from './localstorage.service';
 import { HttpClient } from '@angular/common/http';
-// import { ConfigModel } from '../models/config';
+import { ConfigModel } from '../models/config';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ConfigService {
     login_status: boolean;
   constructor(public localSer: LocalstorageService,
+    public config: ConfigModel,
     public http: HttpClient) { }
   validationStatus() {
     let login = this.localSer.getLocal('login_status') || false;
