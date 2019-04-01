@@ -1,25 +1,29 @@
 <ion-content>
     <div class="bg">
-        <div class="login-logo"></div>
+        <!-- logo -->
+        <div class="login-logo">
+        </div>
         <form>
             <ion-item class="input">
                 <ion-label>
                     <ion-icon name="person"></ion-icon>
                 </ion-label>
-                <ion-input clearInput></ion-input>
+                <ion-input name="username" clearInput placeholder="6-16位英文或数字" maxlength="16" [(ngModel)]="LoginFormInfo.username" (ionBlur)="userBlur(LoginFormInfo.username)" autocomplete="off"></ion-input>
             </ion-item>
 
             <ion-item class="input">
                 <ion-label>
                     <ion-icon name="lock"></ion-icon>
                 </ion-label>
-                <ion-input clearInput></ion-input>
+                <ion-input name="password" clearInput type="password" placeholder="6-18位英文或数字" maxlength="18" [(ngModel)]="LoginFormInfo.password" autocomplete="off"></ion-input>
             </ion-item>
 
-            <ion-button fill="solid" expand="block" round strong>登录</ion-button>
-
-            <ion-button [routerLink]="[ '/register' ]" color="tertiary" fill="solid" expand="full" round strong>注册</ion-button>
         </form>
+        <ion-button fill="solid" expand="block" round strong (click)="goLogin()">登&nbsp;&nbsp;&nbsp;&nbsp;录</ion-button>
+
+        <ion-button class="register" [routerLink]="[ '/register' ]" fill="outline" expand="block" round strong>注&nbsp;&nbsp;&nbsp;&nbsp;册</ion-button>
+
+        <a href="javascript:;">联系客服</a>
     </div>
 
 

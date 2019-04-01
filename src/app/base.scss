@@ -88,9 +88,9 @@ table {
 }
 
 body {
+    color: #000;
     font: 12px/150% '微软雅黑';
     /*unitedCode的写法，宋体的写法*/
-    color: #666;
     /*150%基于当前字体尺寸的百分比行间距*/
     background: #f0f3ef;
 }
@@ -112,13 +112,7 @@ body {
 }
 
 a {
-    color: #666;
-    /*a 标签是不继承颜色 的*/
     text-decoration: none;
-}
-
-a:hover {
-    /* color: #C81623; */
 }
 
 h1,
@@ -140,11 +134,6 @@ em {
     /*去掉原有的样式*/
     text-decoration: none;
     /*去掉下划线或是删除线*/
-}
-
-.col-red {
-    color: #f10215 !important;
-    /*京东主色调*/
 }
 
 
