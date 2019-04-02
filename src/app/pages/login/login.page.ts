@@ -1,18 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalstorageService } from '../../services/localstorage.service';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { Config } from '../../../config/config';
+import { Http } from '../../models/http';
+import { ConfigService } from '../../services/config.service'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit, OnDestroy {
+export class LoginPage implements OnInit {
   LoginForm: FormGroup;
-  // LoginFormInfo: any = { username: '', password: '' };
-  constructor(public localSer: LocalstorageService, public http: HttpClient, public fb: FormBuilder) { }
+  constructor(public localSer: LocalstorageService, public fb: FormBuilder, public configSer: ConfigService) { }
 
   ngOnInit() {
     this.LoginForm = this.fb.group({
@@ -20,15 +20,17 @@ export class LoginPage implements OnInit, OnDestroy {
       password: [null, [Validators.required]]
     });
   }
-  ngOnDestroy() {
-  }
-  goLogin() {
-    // this.http.post(Config.baseurl + '/api/auth', this.LoginFormInfo).subscribe((rs: any) => {
-    //   console.log(rs);
-    // })
-  }
-  userBlur(val) {
-    console.log(val)
+  goLogin() {//登录
+    for (const i in this.LoginForm.controls) {//登录前验证
+      this.LoginForm.controls[i].markAsDirty();
+      this.LoginForm.controls[i].updateValueAndValidity();
+    }
+    if(this.LoginForm.valid) {
+      this.configSer.httpPost(Http.url.login,this.LoginForm.value, (rs =>{//请求接口并通过回调函数返回数据
+          console.log(rs)
+        })
+      )
+    }
   }
 
 }

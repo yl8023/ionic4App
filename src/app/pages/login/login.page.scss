@@ -3,7 +3,7 @@
         height: 100%;
         // text-align: center;
         padding: 8rem 3.2rem 0;
-        background: linear-gradient(to left top, #24d6ea, #f25454);
+        background: linear-gradient(to left top, #26d6eb, #000000);
         .login-logo {
             width: 9rem;
             height: 9rem;
@@ -23,22 +23,11 @@
             //登录和注册
             font-weight: 500;
         }
-        .register {
-            color: #fff;
-        }
-        .customer{
-            text-align: center;
-            a {
-                color: #fff;
-                text-decoration: none
-            }
-        }
-        
         .validators{
             height: 21px;
             p{
                 margin:0;
-                color:#e14545;
+                color:#f04141;
                 font-size:0.8rem;
                 line-height: 21px;
             }
