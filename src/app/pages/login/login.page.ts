@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalstorageService } from '../../services/localstorage.service';
-// import { HttpClient } from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { Http } from '../../models/http';
-import { ConfigService } from '../../services/config.service'
+import { ApInfo } from '../../models/appInfo';
+import { ConfigService } from '../../services/config.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,12 @@ import { ConfigService } from '../../services/config.service'
 })
 export class LoginPage implements OnInit {
   LoginForm: FormGroup;
-  constructor(public localSer: LocalstorageService, public fb: FormBuilder, public configSer: ConfigService) { }
+  constructor(
+    public localSer: LocalstorageService,
+    public fb: FormBuilder,
+    public configSer: ConfigService,
+    public router: Router
+    ) { }
 
   ngOnInit() {
     this.LoginForm = this.fb.group({
@@ -26,11 +31,18 @@ export class LoginPage implements OnInit {
       this.LoginForm.controls[i].updateValueAndValidity();
     }
     if(this.LoginForm.valid) {
-      this.configSer.httpPost(Http.url.login,this.LoginForm.value, (rs =>{//请求接口并通过回调函数返回数据
+      this.configSer.loadingFun('登录中..')
+      this.configSer.httpPost(ApInfo.url.login,this.LoginForm.value, (rs: any) =>{//请求接口并通过回调函数返回数据
           console.log(rs)
-        })
+          let status: object = {login_status:true}
+          this.localSer.setLocal(ApInfo.localInfo.userInfo,Object.assign(rs.data, status))
+          this.configSer.loading.dismiss()
+          this.router.navigate(['']);
+          this.configSer.preToastOp(rs.error)
+        }
       )
     }
   }
+  
 
 }
