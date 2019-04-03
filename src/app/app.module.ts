@@ -17,7 +17,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    IonicModule.forRoot(), AppRoutingModule,
+    IonicModule.forRoot({
+      backButtonText: '返回'
+    }), AppRoutingModule,
     HttpClientModule],
   providers: [
     StatusBar,
