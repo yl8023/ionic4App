@@ -34,10 +34,12 @@ export class LoginPage implements OnInit {
       this.configSer.loadingFun('登录中..')
       this.configSer.httpPost(ApInfo.url.login,this.LoginForm.value, (rs: any) =>{//请求接口并通过回调函数返回数据
           console.log(rs)
-          let status: object = {login_status:true}
-          this.localSer.setLocal(ApInfo.localInfo.userInfo,Object.assign(rs.data, status))
           this.configSer.loading.dismiss()
-          this.router.navigate(['']);
+          if(rs.errno === 90500) {
+            let status: object = {login_status:true}
+            this.localSer.setLocal(ApInfo.localInfo.userInfo,Object.assign(rs.data, status))
+            this.router.navigate(['']);
+          }
           this.configSer.preToastOp(rs.error)
         }
       )

@@ -4,6 +4,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+      <ion-label>Item Avatar</ion-label>
+    </ion-item>
+    <ion-list-header>
+      <ion-label>Items</ion-label>
+    </ion-list-header>
+    <ion-item>Item 1</ion-item>
+    <ion-item>Item 2</ion-item>
+    <ion-item>Item 3</ion-item>
+    <ion-item>Item 4</ion-item>
+    <ion-item>Item 5</ion-item>
+  </ion-list>
+
   <ion-button color="danger" fill="solid" expand="block" (click)="outLogin()">退出登录</ion-button>
 </ion-content>

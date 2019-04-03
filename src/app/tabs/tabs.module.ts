@@ -7,7 +7,7 @@ import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
 
-import { ConfigService } from '../services/config.service';
+// import { ConfigService } from '../services/config.service';
 
 @NgModule({
   imports: [
@@ -17,6 +17,6 @@ import { ConfigService } from '../services/config.service';
     TabsPageRoutingModule
   ],
   declarations: [TabsPage],
-  providers:[ConfigService]
+  // providers:[ConfigService]
 })
 export class TabsPageModule {}
