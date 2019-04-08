@@ -10,6 +10,7 @@ import { ApInfo } from '../../models/appInfo';
 export class PrizePage implements OnInit {
   get_info: any;
   openList: any;
+  toggle: boolean = true;
   constructor(public configSer: ConfigService) { }
 
   ngOnInit() {
@@ -25,6 +26,24 @@ export class PrizePage implements OnInit {
         re.dismiss();
       })
       this.openList = rs.data
+      this.openList.forEach((val: any) => {
+        val.open = false;
+      });
     })
+  }
+  openToggle(item: any){
+    this.openList.forEach((val: any) => {
+      if(item !== val) {
+        val.open = false;
+      }
+      else {
+        item.open = !item.open;
+      }
+      this.toggle = true;
+      if(item.open) {
+        this.toggle = false;
+      }
+    });
+    
   }
 }
