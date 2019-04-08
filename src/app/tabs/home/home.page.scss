@@ -1,0 +1,47 @@
+
+.slides{
+    .swiper-slide{
+        max-width: calc(100% - 24px);
+        margin: 8px 12px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #fff;
+        
+        img{
+            height:170px;
+        }
+    }
+}
+.dt-icon{
+    text-align: center;
+    ion-thumbnail{
+        margin:0 auto;
+    }
+    span{
+        font-size: 0.8rem;
+    }
+}
+.grid_bg{
+    background: #fff;
+    .head{
+        b{
+            margin:2px;
+            font-size: 15px;
+        }
+    }
+    ion-col.col_bg{
+        box-shadow: 0 0 0.55px #989aa2;
+        padding-top: 0;
+        img{
+            border-radius: 50%;
+        }
+        .text{
+            line-height: 24px;
+            text-align: center;
+            .subtext{
+                color: #847f7f;
+                font-size: 13px;
+            }
+        }
+    }
+}

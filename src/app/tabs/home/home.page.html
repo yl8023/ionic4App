@@ -1,13 +1,46 @@
 <ion-header>
-  <ion-toolbar>
+  <!-- <ion-toolbar>
     <ion-title>home</ion-title>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
 
-<ion-content padding>
-<ion-select placeholder="1" interface="alert">
-  <ion-select-option>1</ion-select-option>
-  <ion-select-option>2</ion-select-option>
-  <ion-select-option>3</ion-select-option>
-</ion-select>
+<ion-content color="light">
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let item of images">
+      <img [src]="item">
+    </ion-slide>
+  </ion-slides>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="dt-icon" *ngFor="let dt of quickLink">
+        <ion-thumbnail>
+          <img [src]="dt.url">
+        </ion-thumbnail>
+        <span>{{dt.text}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="grid_bg">
+    <ion-row>
+      <ion-col class="head">
+        <b>游戏彩种</b>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="col_bg" size="6" *ngFor="let lotto of lotteries">
+        <ion-row>
+          <ion-col size="4">
+            <ion-thumbnail>
+              <img [src]="gameicon[lotto.productName]">
+            </ion-thumbnail>
+          </ion-col>
+          <ion-col class="text" size="8">
+            <span>{{lotto.name}}</span><br/>
+            <span class="subtext">{{lotto.desc}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

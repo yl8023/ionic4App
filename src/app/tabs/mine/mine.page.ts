@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { ApInfo } from '../../models/appInfo';
+import { ApInfo } from '../../models/appInfo';
 // import { LocalstorageService } from '../../services/localstorage.service';
 import { ConfigService } from '../../services/config.service';
 // import { Router } from '@angular/router';
@@ -23,7 +23,7 @@ export class MinePage implements OnInit {
     
   }
   configOut(t: any) {
-    t.localSer.removeAll();
+    t.localSer.remove(ApInfo.localInfo.userInfo);
     t.router.navigate(['/login']);
   }
 }

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { LocalstorageService } from './localstorage.service';
 import { HttpClient } from '@angular/common/http';
-import { Config } from '../../config/config';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { ApInfo } from '../models/appInfo';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Config } from '../../config/config';
+import { lotteries } from '../../config/lottoers';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,9 @@ export class ConfigService {
     public alert: AlertController,
     public router: Router
   ) { }
+  getLotto() {
+    return lotteries
+  }
   validationStatus() {
     let user = this.localSer.getLocal(ApInfo.localInfo.userInfo)
     let login_status = user ? user.login_status : false
