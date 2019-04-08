@@ -68,16 +68,11 @@ export class ConfigService {
       cssClass: ['custom-class', 'custom-loading']
     });
     loading.present()
-    // return loading;
+    return loading;
   }
-  async preToast(str: string) {// toast提示消息，2秒
-    const toast = await this.toast.create({
-      message: str,
-      duration: 2500
-    });
-    toast.present();
-  }
-  async preToastOp(str: string, direction: any = 'top', second: number = 2000, showBtn: boolean = true) {// toast提示消息，可关闭
+  
+  async preToastOp(str: string, direction: any = 'top', second: number = 2000, showBtn: boolean = true) {// toast提示消息，可关闭。默认2000
+    // 为0时永久
     const toast = await this.toast.create({
       message: str,
       showCloseButton: true,
@@ -86,6 +81,7 @@ export class ConfigService {
       closeButtonText: '关闭'
     });
     toast.present();
+    return toast
   }
   async preAlert(head: string, msg: string, confirmFn?: any, cancelFn?: any) {// alert确认框，可关闭
     let _this = this;

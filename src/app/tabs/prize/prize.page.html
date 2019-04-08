@@ -1,9 +1,19 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>prize</ion-title>
+  <ion-toolbar color="danger">
+    <ion-title>开奖中心</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content color="light">
+  <ion-card *ngFor="let looto of openList">
+    <ion-item>
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label>{{looto.lotteryname}}</ion-label>
+      <ion-button fill="outline" slot="end" color="danger">更多</ion-button>
+    </ion-item>
+    <ion-card-content>
+      <p></p>
+      <p></p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

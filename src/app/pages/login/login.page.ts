@@ -31,12 +31,14 @@ export class LoginPage implements OnInit {
       this.LoginForm.controls[i].updateValueAndValidity();
     }
     if(this.LoginForm.valid) {
-      this.configSer.loadingFun('登录中..')
+      let loginLoading = this.configSer.loadingFun('登录中..')
       this.configSer.httpPost(ApInfo.url.login,this.LoginForm.value, (rs: any) =>{//请求接口并通过回调函数返回数据
-          console.log(rs)
-          this.configSer.loading.dismiss()
+          // console.log(rs)
+          loginLoading.then((re)=>{
+            re.dismiss()
+          })
           if(rs.errno === 90500) {
-            let status: object = {login_status:true}
+            let status: object = {login_status: true}
             this.localSer.setLocal(ApInfo.localInfo.userInfo,Object.assign(rs.data, status))
             this.router.navigate(['']);
           }
