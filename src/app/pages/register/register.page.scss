@@ -1,0 +1,30 @@
+form {
+    padding: 8rem 3rem 0;
+    .input {
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+    .item-input .sc-ion-label-ios-h {
+        width: 68px;
+    }
+    .sc-ion-input-ios-h {
+        --padding-end: 0px
+    }
+    p {
+        text-align: left;
+        margin: 0;
+        padding-left: 16px;
+        font-size: 12px;
+        color: red
+    }
+}
+
+.invitation {
+    padding: 0 40px;
+    margin-top: 20px;
+}
+
+p {
+    text-align: center;
+    padding-left: 16px;
+}

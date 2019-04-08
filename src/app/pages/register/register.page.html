@@ -1,12 +1,42 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref=""></ion-back-button>
-    </ion-buttons>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref=""></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+    <form [formGroup]="LoginForm">
+        <ion-item class="input">
+            <ion-label>
+                手机号
+            </ion-label>
+            <ion-input name="account" clearInput placeholder="请输入手机号码" maxlength="13" formControlName="username"></ion-input>
+        </ion-item>
+        <p *ngIf="usernameShow">{{usernameInfo}}</p>
+        <ion-item class="input">
+            <ion-label>
+                密码
+            </ion-label>
+            <ion-input name="password" clearInput type="password" placeholder="请输入密码" maxlength="16" formControlName="password"></ion-input>
+        </ion-item>
+        <p *ngIf="passwordShow">{{passwordInfo}}</p>
+        <ion-item class="input">
+            <ion-label>
+                确认密码
+            </ion-label>
+            <ion-input name="password" clearInput type="password" placeholder="请确认密码" maxlength="16" formControlName="password2"></ion-input>
+        </ion-item>
+        <p *ngIf="password2Show">{{password2Info}}</p>
+        <ion-item class="input">
+            <ion-label>
+                邀请码
+            </ion-label>
+            <ion-input name="invitationCode" clearInput placeholder="请输入邀请码" maxlength="16" formControlName="invite_code"></ion-input>
+        </ion-item>
+        <p *ngIf="invite_codeShow">{{invite_codeInfo}}</p>
+    </form>
+    <ion-button fill="solid" expand="block" color="secondary" class="invitation" (click)="goInvitation()">注&nbsp;&nbsp;&nbsp;&nbsp;册</ion-button>
+    <p>已有账号 ? 点击 <a [routerLink]="[ '/login' ]">马上登陆</a> </p>
 </ion-content>
