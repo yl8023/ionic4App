@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApInfo } from '../../models/appInfo';
 import { ConfigService } from '../../services/config.service';
 import { Router } from '@angular/router';
@@ -68,11 +68,15 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     let userInfo = this.configSer.localSer.getLocal(ApInfo.localInfo.userInfo);
-    if (userInfo) this.token_info = [{ api_token: userInfo.token }];
-    this.getSlidersImage();
-    this.getlottoers();
+    if (userInfo) {
+      this.token_info = [{ api_token: userInfo.token }];
+      this.getSlidersImage();
+      this.getlottoers();
+    };
   }
-
+  doRefresh(event) {
+    this.getlottoers(event.target)
+  }
   getSlidersImage() {
     this.images = this.configSer.localSer.getLocal(ApInfo.localInfo.images)
     if (!this.images) {
@@ -83,17 +87,26 @@ export class HomePage implements OnInit {
     }
   }
 
-  getlottoers() {
+  getlottoers(s?) {
     this.lotteries = this.configSer.localSer.getLocal(ApInfo.localInfo.lottoers)
     // if(!this.lotteries){
-    let load = this.configSer.loadingFun('获取数据中..');
-    this.configSer.httpGet(ApInfo.url.lotteries, this.token_info, (rs: any) => {
-      load.then((re)=>{
-        re.dismiss()
+    if (s) {
+      this.configSer.httpGet(ApInfo.url.lotteries, this.token_info, (rs: any) => {
+        s.complete();
+        this.lotteries = this.objToArray(rs.data);
+        this.configSer.localSer.setLocal(ApInfo.localInfo.lottoers, this.lotteries)
+      })
+    } else {
+      let load = this.configSer.loadingFun('获取数据中..');
+      this.configSer.httpGet(ApInfo.url.lotteries, this.token_info, (rs: any) => {
+        load.then((re) => {
+          re.dismiss()
+        });
+        this.lotteries = this.objToArray(rs.data);
+        this.configSer.localSer.setLocal(ApInfo.localInfo.lottoers, this.lotteries)
       });
-      this.lotteries = this.objToArray(rs.data);
-      this.configSer.localSer.setLocal(ApInfo.localInfo.lottoers, this.lotteries)
-    });
+    }
+
     // }
   }
 

@@ -7,10 +7,16 @@ import { IonicModule } from '@ionic/angular';
 
 import { PrizePage } from './prize.page';
 
+import { PrizeDetailPage } from './prize-detail/prize-detail.page'
+
 const routes: Routes = [
   {
     path: '',
     component: PrizePage
+  },
+  { 
+    path: 'prize-detail/:lottoid',
+    component: PrizeDetailPage 
   }
 ];
 
@@ -21,6 +27,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PrizePage]
+  declarations: [PrizePage,PrizeDetailPage]
 })
 export class PrizePageModule {}

@@ -10,11 +10,10 @@
       <ion-item>
         <!-- <ion-icon name="logo-usd" slot="start"></ion-icon> -->
         <ion-label>{{lotto.lotteryname}}</ion-label>
-        <ion-button fill="outline" slot="end" [color]="lotto.open?'dark':'danger'" (click)="openToggle(lotto)">
-          {{lotto.open?'收起':'更多'}}</ion-button>
+        <ion-button fill="outline" slot="end" [color]="lotto.open?'dark':'danger'" (click)="openToggle(lotto)">更多</ion-button>
       </ion-item>
       <ion-card-content>
-        <div class="item-list" [ngClass]="{'item-box':lotto.open}">
+        <div class="item-list">
           <p class="item" *ngFor="let item of lotto?.openhistory">
             <span>第{{item.issue}}期</span>
             <span>{{item.code}}</span>

@@ -4,6 +4,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { ApInfo } from '../../models/appInfo';
 import { ConfigService } from '../../services/config.service';
 import { Router } from '@angular/router';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
+// import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +18,13 @@ export class LoginPage implements OnInit {
     public localSer: LocalstorageService,
     public fb: FormBuilder,
     public configSer: ConfigService,
-    public router: Router
+    public router: Router,
+    private keyboard: Keyboard
     ) { }
-
+  showkey(){
+    this.keyboard.show();
+  }
+  
   ngOnInit() {
     this.LoginForm = this.fb.group({
       username: [null, [Validators.required]],

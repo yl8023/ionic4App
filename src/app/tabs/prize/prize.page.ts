@@ -26,24 +26,10 @@ export class PrizePage implements OnInit {
         re.dismiss();
       })
       this.openList = rs.data
-      this.openList.forEach((val: any) => {
-        val.open = false;
-      });
+      this.configSer.localSer.setLocal(ApInfo.localInfo.lottoCodeList,this.openList)
     })
   }
   openToggle(item: any){
-    this.openList.forEach((val: any) => {
-      if(item !== val) {
-        val.open = false;
-      }
-      else {
-        item.open = !item.open;
-      }
-      this.toggle = true;
-      if(item.open) {
-        this.toggle = false;
-      }
-    });
-    
+    this.configSer.router.navigate(['tabs/prize/prize-detail',item.lotteryid])
   }
 }

@@ -3,6 +3,7 @@ export class ApInfo{
         userInfo: '__user_info',
         lottoers: '__lottoers',
         images: '__images',
+        lottoCodeList:'__code_list',
     }
     static url = {
         login: '/api/auth', // 登录 post

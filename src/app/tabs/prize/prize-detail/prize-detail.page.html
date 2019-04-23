@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/prize"></ion-back-button>
+      </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+        <div class="item-list detail">
+          <p class="item" *ngFor="let item of codeList?.openhistory">
+            <span>第{{item.issue}}期</span>
+            <span>{{item.code}}</span>
+          </p>
+        </div>
+      </ion-card-content>
+  </ion-card>
+</ion-content>

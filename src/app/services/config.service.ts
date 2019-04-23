@@ -47,9 +47,15 @@ export class ConfigService {
   httpGet(url: string, info: Array<object>, fun: any) {//get 请求  fun为回调函数 参数格式为数组对象[{}..]
     let par = this.mk_url(info)
     this.http.get(Config.baseurl + url + par).subscribe((rs: any) => {
-      // console.log(rs)
       fun(rs);
-    })
+    },
+    error=>{
+      fun(error)
+    },
+    ()=>{
+      
+    }
+    )
   }
   httpPost(url: string, par: object, fun: any) {//post 请求  fun为回调函数 参数格式为对象 {}
 

@@ -5,11 +5,17 @@
 </ion-header>
 
 <ion-content color="light">
+  <ion-refresher (ionRefresh)="doRefresh($event)" style="background-color:#f4f5f8">
+    <ion-refresher-content pullingIcon="refresh" pullingText="下拉刷新" refreshingSpinner="circles"
+      refreshingText="拼命加载中...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-slides pager="true" [options]="slideOpts">
     <ion-slide *ngFor="let item of images">
       <img [src]="item">
     </ion-slide>
   </ion-slides>
+
   <ion-grid>
     <ion-row>
       <ion-col class="dt-icon" *ngFor="let dt of quickLink">
@@ -35,7 +41,7 @@
             </ion-thumbnail>
           </ion-col>
           <ion-col class="text" size="8">
-            <span>{{lotto.name}}</span><br/>
+            <span>{{lotto.name}}</span><br />
             <span class="subtext">{{lotto.desc}}</span>
           </ion-col>
         </ion-row>
